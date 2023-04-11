@@ -1,5 +1,6 @@
 package com.readingisgood.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -78,7 +79,8 @@ public class BookOrderService {
 		Date startDate = bookOrderPayload.getStartDate();
 		Date endDate = bookOrderPayload.getEndDate();
 		
-		List<BookOrder> bookOrders = this.bookOrderRepository.findBookOrdersBetweenDates(startDate, endDate);
+		List<BookOrder> bookOrders = this.bookOrderRepository.findBookOrdersBetweenDates(new SimpleDateFormat("yyy-MM-dd").format(startDate), 
+				new SimpleDateFormat("yyy-MM-dd").format(endDate));
 		
 		return new ResponseEntity<List<BookOrder>>(bookOrders,HttpStatus.OK);
 		

@@ -18,7 +18,7 @@ public interface BookOrderRepository extends PagingAndSortingRepository<BookOrde
 	@Query(value = "select * from book_order where customer_id = ?1", nativeQuery = true)
 	Page<BookOrder> findBookOrdersByCustomerId(Long customerId, Pageable pageable);
 	
-	@Query(value = "select * from book_order where order_date BETWEEN :startDate AND :endDate",nativeQuery = true)
-	public List<BookOrder> findBookOrdersBetweenDates(@Param("startDate")Date startDate,@Param("endDate")Date endDate);
+	@Query(value = "select * from book_order where order_date BETWEEN ?1 AND ?2",nativeQuery = true)
+	public List<BookOrder> findBookOrdersBetweenDates(String startDate,String endDate);
 
 }

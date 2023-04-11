@@ -35,7 +35,7 @@ public class BookOrderController {
 	}
 
 	@GetMapping("/byid/{id}")
-	public ResponseEntity<?> getOrderById(@PathVariable Long id,Principal principal) {
+	public ResponseEntity<?> getOrderById(@PathVariable Long id, Principal principal) {
 		if (id == null) {
 			return new ResponseEntity<String>(PromptMessages.MISSING_BODY, HttpStatus.BAD_REQUEST);
 		} else {
@@ -43,9 +43,16 @@ public class BookOrderController {
 		}
 
 	}
-	
+
+	@PostMapping("/bycustomerid")
+	public ResponseEntity<?> getBookOrdersByCustomerId(@RequestBody BookOrderPayload bookOrderPayload,
+			Principal principal) {
+		return this.bookOrderService.getBookOrdersByCustomerId(bookOrderPayload);
+
+	}
+
 	@PostMapping("/bydate")
-	public ResponseEntity<?> getBookOrdersByDate(@RequestBody BookOrderPayload bookOrderPayload, Principal principal){
+	public ResponseEntity<?> getBookOrdersByDate(@RequestBody BookOrderPayload bookOrderPayload, Principal principal) {
 		return this.bookOrderService.getBookOrdersByDate(bookOrderPayload);
 	}
 

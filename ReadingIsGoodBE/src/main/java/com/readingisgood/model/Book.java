@@ -23,9 +23,6 @@ public class Book {
 	
 	private int stock;
 	
-	@ManyToOne
-	@JoinColumn(name="book_order_id")
-	private BookOrder order;
 	
 	private double price;
 
@@ -61,13 +58,7 @@ public class Book {
 		this.author = author;
 	}
 
-	public BookOrder getOrder() {
-		return order;
-	}
-
-	public void setOrder(BookOrder order) {
-		this.order = order;
-	}
+	
 
 	public String getIsbn() {
 		return isbn;

@@ -49,7 +49,7 @@ public class CustomerController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateCustomer(@RequestBody LoginRequest loginRequest) {
-		if (loginRequest != null) {
+		if (loginRequest == null) {
 			return new ResponseEntity<String>(PromptMessages.MISSING_BODY, HttpStatus.BAD_REQUEST);
 
 		} else {
