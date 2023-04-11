@@ -15,9 +15,13 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	private String isbn;
+	
 	private String name;
 	
 	private String author;
+	
+	private int stock;
 	
 	@ManyToOne
 	@JoinColumn(name="book_order_id")
@@ -63,6 +67,22 @@ public class Book {
 
 	public void setOrder(BookOrder order) {
 		this.order = order;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	
 	

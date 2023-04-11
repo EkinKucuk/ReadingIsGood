@@ -1,7 +1,9 @@
 package com.readingisgood.model;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,8 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class BookOrder {
@@ -19,13 +24,17 @@ public class BookOrder {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="book_id")
+	@JoinColumn(name="id")
 	private List<Book> books;
+	
+	@Basic
+	@Temporal(TemporalType.DATE)
+	private Date orderDate;
 
 	public Long getId() {
 		return id;
@@ -49,6 +58,14 @@ public class BookOrder {
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
 	
 	

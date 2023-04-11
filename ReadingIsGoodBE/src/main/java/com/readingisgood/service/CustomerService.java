@@ -56,17 +56,17 @@ public class CustomerService implements UserDetailsService {
 	}
 
 	public Customer findCustomerById(Long id) {
-		return this.customerRepository.getGenericUSerById(id);
+		return this.customerRepository.getCustomerById(id);
 	}
 
 	public Customer findCustomerByEmail(String email) {
-		return this.customerRepository.getUserByEmail(email);
+		return this.customerRepository.getCustomerByEmail(email);
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		return this.customerRepository.getUserByEmail(username);
+		return this.customerRepository.getCustomerByEmail(username);
 	}
 
 }

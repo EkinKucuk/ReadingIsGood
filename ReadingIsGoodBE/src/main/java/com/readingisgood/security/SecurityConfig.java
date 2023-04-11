@@ -53,7 +53,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/", "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html",
 						"/**/*.css", "/**/*.js")
-				.permitAll().antMatchers("/customer/**", "/h2-console/**").permitAll()
+				.permitAll()
+				.antMatchers("/customer/**", "/h2-console/**", "/swagger-resources/**", "/swagger-ui.html",
+						"/v2/api-docs", "/webjars/**")
+				.permitAll()
 
 				.anyRequest().authenticated();
 		http.headers().frameOptions().disable();

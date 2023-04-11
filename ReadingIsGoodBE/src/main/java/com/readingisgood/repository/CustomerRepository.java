@@ -10,10 +10,10 @@ import com.readingisgood.model.Customer;
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 	
 	@Query(value = "select * from customer where id = ?1",nativeQuery = true)	
-	public Customer getGenericUSerById(Long id);
+	public Customer getCustomerById(Long id);
 	
 	@Query(value = "select * from customer where email = ?1",nativeQuery = true)
-	public Customer getUserByEmail(String email);
+	public Customer getCustomerByEmail(String email);
 
 	
 

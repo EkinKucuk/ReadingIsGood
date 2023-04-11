@@ -2,11 +2,21 @@ package com.readingisgood.payload;
 
 public class BookPayload {
 
+	private String isbn;
+
 	private String name;
 
 	private String author;
 
 	private double price;
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
 
 	public String getName() {
 		return name;
